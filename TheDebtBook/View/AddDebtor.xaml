@@ -1,0 +1,57 @@
+﻿<Window x:Class="TheDebtBook.View.AddDebtor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheDebtBook.View"
+        mc:Ignorable="d"
+        
+        Title="Add Debtor" Height="175" Width="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0">
+            <Label>Name</Label>
+            <TextBox
+                x:Name="nameBox"
+                ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"
+            >
+                <TextBox.Text>
+                    <Binding Path="DebtorName">
+                        <Binding.ValidationRules>
+                            <local:NonZeroLength />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Margin="0,5,0,10">
+            <Label>Initial Value</Label>
+            <TextBox
+                x:Name="valueBox"
+                ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"
+            >
+                <TextBox.Text>
+                    <Binding Path="InitialValue">
+                        <Binding.ValidationRules>
+                            <local:NonZeroLength />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <Button Content="_Save" Grid.Column="0" Margin="0,0,5,0" Grid.Row="2" Name="saveBtn"></Button>
+        <Button Content="_Cancel" Grid.Column="1" Margin="5,0,0,0" Grid.Row="2" Name="cancelBtn"></Button>
+
+    </Grid>
+</Window>
