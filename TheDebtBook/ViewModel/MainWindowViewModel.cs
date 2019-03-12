@@ -33,7 +33,6 @@ namespace TheDebtBook.ViewModel
         public MainWindowViewModel()
         {
             debtors = new ObservableCollection<Debtor>();
-
         }
 
         public ObservableCollection<Debtor> Debtors
